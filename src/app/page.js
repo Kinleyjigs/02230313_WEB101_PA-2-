@@ -51,8 +51,10 @@ const SearchAndCaughtPage = () => {
   };
 
   const handleCatchPokemon = (pokemon) => {
-    catchPokemon(pokemon); // Add the caught Pokemon to the Zustand store
-    setPokemonData(prevPokemonData => prevPokemonData.filter(p => p.id !== pokemon.id));
+    if (!caughtPokemon.find(p => p.id === pokemon.id)) { // Check if the Pokemon is not already caught
+      catchPokemon(pokemon); // Add the caught Pokemon to the Zustand store
+    }
+    setPokemonData(prevPokemonData => prevPokemonData.filter(p => p.id !== pokemon.id)); // Filter out the caught Pokemon from the search results
   };
 
   useEffect(() => {
@@ -72,6 +74,9 @@ const SearchAndCaughtPage = () => {
         <Button type="button" onClick={() => setShowSearchPage(!showSearchPage)}>
           {showSearchPage ? 'View Caught Pokemon' : 'View Search Results'}
         </Button>
+      </div>
+      <div className="mt-4">
+        <Button onClick={() => window.location.href = '/'} className="absolute top-0 right-0">Back</Button>
       </div>
       {showSearchPage ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -119,3 +124,4 @@ const SearchAndCaughtPage = () => {
 }
 
 export default SearchAndCaughtPage;
+
