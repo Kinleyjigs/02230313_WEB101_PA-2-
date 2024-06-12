@@ -15,6 +15,9 @@ This is a simple React application where users can search for Pokémon and catch
 ### Getting Started
 Clone the repository:
 
+```
+git clone https://github.com/Kinleyjigs/02230313_WEB101_PA-2-.git
+```
 
 ### Setup
 1. Create a new Next.js app
